@@ -15,3 +15,23 @@
 ### bug 跟踪
 
 https://github.com/facebook/react/issues/28574
+
+## 2. useDeferredValue
+
+### 延迟更新 UI 的某些部分
+
+在组件的顶层调用 useDeferredValue 来延迟更新 UI 的某些部分。
+
+```jsx
+import { useState, useDeferredValue } from "react";
+
+function SearchPage() {
+  const [query, setQuery] = useState("");
+  const deferredQuery = useDeferredValue(query);
+  // ...
+}
+```
+
+### 文档
+
+https://zh-hans.react.dev/reference/react/useDeferredValue
