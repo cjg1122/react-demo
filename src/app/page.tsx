@@ -9,6 +9,10 @@ const navs = [
     src: "/useDeferredValue",
     name: "useDeferredValue",
   },
+  {
+    src: "/useActionState",
+    name: "useActionState",
+  },
 ];
 
 export default function Page() {

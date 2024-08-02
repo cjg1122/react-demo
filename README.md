@@ -35,3 +35,15 @@ function SearchPage() {
 ### 文档
 
 https://zh-hans.react.dev/reference/react/useDeferredValue
+
+## 3. useActionState
+
+useActionState 是一个可以根据某个表单动作的结果更新 state 的 Hook
+
+_在早期的 React Canary 版本中, 此 API 是 React DOM 的一部分, 称为 useFormState_
+
+**配合 Server Action 一起使用, useActionState 允许与表单交互的服务器的返回值在 hydration 完成前显示**
+
+## bug 跟踪
+
+https://github.com/facebook/react/issues/30580
