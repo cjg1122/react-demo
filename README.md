@@ -53,3 +53,9 @@ https://github.com/facebook/react/issues/30580
 use API 用于在组件渲染时读取资源, **目前支持从 Context 或 Promise 中读取资源**, 后续也可能会支持更多方式
 
 use **没有 Hooks 的规则约束**, 可以在循环或条件语句中使用
+
+## 4. forwardRef/ref prop/useImperativeHandle
+
+新的函数组件将不再需要 forwardRef, 在未来的版本中, 将弃用并移除 forwardRef
+
+useImperativeHandle 它能让你自定义由 ref 暴露出来的句柄
