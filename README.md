@@ -20,7 +20,7 @@ https://github.com/facebook/react/issues/28574
 
 ### 延迟更新 UI 的某些部分
 
-在组件的顶层调用 useDeferredValue 来延迟更新 UI 的某些部分。
+在组件的顶层调用 useDeferredValue 来延迟更新 UI 的某些部分.
 
 ```jsx
 import { useState, useDeferredValue } from "react";
@@ -54,8 +54,21 @@ use API 用于在组件渲染时读取资源, **目前支持从 Context 或 Prom
 
 use **没有 Hooks 的规则约束**, 可以在循环或条件语句中使用
 
-## 4. forwardRef/ref prop/useImperativeHandle
+## 5. forwardRef/ref prop/useImperativeHandle
 
 新的函数组件将不再需要 forwardRef, 在未来的版本中, 将弃用并移除 forwardRef
 
 useImperativeHandle 它能让你自定义由 ref 暴露出来的句柄
+
+## 6. useTransition/startTransition
+
+在不阻塞 UI 的情况下更新状态
+
+### 注意
+
+1. useTransition 是一个 Hook, 因此只能在组件或自定义 Hook 内部调用. 如果需要在其他地方启动 transition（例如从数据库）, 请调用独立的 **startTransition** 函数
+2. 只有在可以访问该状态的 set 函数时, 才能将其对应的状态更新包装为 transition. 如果你想启用 Transition 以响应某个 prop 或自定义 Hook 值, 请尝试使用 **useDeferredValue**
+3. 传递给 startTransition 的函数必须是**同步**的. React 会立即执行此函数, 并将在其执行期间发生的所有状态更新标记为 transition. 如果在其执行期间, 尝试稍后执行状态更新（例如在一个定时器中执行状态更新）, 这些状态更新不会被标记为 transition
+4. 标记为 Transition 的状态更新将被其他状态更新打断. 例如在 Transition 中更新图表组件, 并在图表组件仍在重新渲染时继续在输入框中输入, React 将首先处理输入框的更新, 之后再重新启动对图表组件的渲染工作
+5. Transition 更新不能用于控制文本输入
+6. 目前, React 会批处理多个同时进行的 transition. 这是一个限制, 可能会在未来版本中删除
