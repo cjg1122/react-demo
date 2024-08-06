@@ -72,3 +72,12 @@ useImperativeHandle 它能让你自定义由 ref 暴露出来的句柄
 4. 标记为 Transition 的状态更新将被其他状态更新打断. 例如在 Transition 中更新图表组件, 并在图表组件仍在重新渲染时继续在输入框中输入, React 将首先处理输入框的更新, 之后再重新启动对图表组件的渲染工作
 5. Transition 更新不能用于控制文本输入
 6. 目前, React 会批处理多个同时进行的 transition. 这是一个限制, 可能会在未来版本中删除
+
+## 7. useFormStatus
+
+提供上次表单提交状态信息
+
+### 注意
+
+1. useFormStatus Hook 必须从在 \<form\> 内渲染的组件中调用。
+2. useFormStatus 仅会返回父级 \<form\> 的状态信息。它不会返回同一组件或子组件中渲染的任何 \<form\> 的状态信息。
